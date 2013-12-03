@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GyroLinearAcceleration</string>
+    <string name="acceleration_name">Acceleration</string>
+    <string name="action_settings">Settings</string>
+    <string name="gyro_name">Gyro</string>
+    <string name="developer_url">KircherElectronics.com</string>
+    <string name="fusion_label">Fusion</string>
+    <string name="sensor_name">Sensor</string>
+    <string name="log_data_label">Log Data</string>
+    <string name="filter_help">Help</string>
+
+</resources>

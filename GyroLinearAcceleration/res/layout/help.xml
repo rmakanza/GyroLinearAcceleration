@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true" >
+
+                    <TextView
+                        android:id="@+id/label_sensor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/app_name"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/dark_orange" />
+
+                    <TextView
+                        android:id="@+id/label_app_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/label_sensor_name"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/filter_help"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_header_introduction_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="What does this application do?"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_introduction_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Gyro Linear Acceleration is intended to provide linear acceleration measurements for devices that are equiped with a gyroscope. Linear acceleration is the acceleration of the device with the gravity of earth subtracted. Another way of thinking about it is the acceleration of the device regardless of the tilt of the device."
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/text_header_introduction_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Why is this application useful?"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_introduction_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Gyro Linear Acceleration is useful for understanding how sensor fusions for determining linear acceleration are used and how well they work."
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/text_header_introduction_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="How does this application work?"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_introduction_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Gyro Linear Acceleration fuses the acceleration sensor with the gyroscope sensor to provide an estimate of the linear acceleration of the device. The gyroscope sensor is used to measure the orientation of the device and then provide tilt compensations for the acceleration sensor."
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
