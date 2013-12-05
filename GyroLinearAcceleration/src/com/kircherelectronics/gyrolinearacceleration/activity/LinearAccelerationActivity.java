@@ -27,10 +27,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -56,7 +58,7 @@ import com.kircherelectronics.gyrolinearacceleration.sensor.observer.LinearAccel
  * Produces an estimation of the linear acceleration using a fusion between the
  * acceleration sensor and the gyroscope sensor. The gyroscope is used to
  * determine the tilt of the device and Trigonometric calculations are used to determine
- * the gravity components of the tilt angles via Cardnal angles to determine
+ * the gravity components of the tilt angles via Cardan angles to determine
  * linear acceleration.
  * 
  * @author Kaleb
@@ -508,7 +510,7 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 				+ ".csv";
 
 		File dir = new File(Environment.getExternalStorageDirectory()
-				+ File.separator + "LinearAcceleration" + File.separator
+				+ File.separator + "GyroLinearAcceleration" + File.separator
 				+ "Logs" + File.separator + "Acceleration");
 		if (!dir.exists())
 		{
@@ -546,9 +548,20 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 		}
 		finally
 		{
-			this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri
-					.parse("file://"
-							+ Environment.getExternalStorageDirectory())));
+			// Update the MediaStore so we can view the file without rebooting.
+			// Note that it appears that the ACTION_MEDIA_MOUNTED approach is
+			// now blocked for non-system apps on Android 4.4.
+			MediaScannerConnection.scanFile(this, new String[]
+			{ "file://" + Environment.getExternalStorageDirectory() }, null,
+					new MediaScannerConnection.OnScanCompletedListener()
+					{
+						@Override
+						public void onScanCompleted(final String path,
+								final Uri uri)
+						{
+					
+						}
+					});
 		}
 	}
 

@@ -252,8 +252,6 @@ public class LinearAccelerationSensor implements GyroscopeSensorObserver,
 			components[2] = (float) (SensorManager.GRAVITY_EARTH
 					* Math.cos(gyroscopeOrientation[1]) * Math
 					.cos(gyroscopeOrientation[2]));
-			
-			Log.d(tag, Arrays.toString(components));
 
 			// Subtract the gravity component of the signal
 			// from the input acceleration signal to get the
