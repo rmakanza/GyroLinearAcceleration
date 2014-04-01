@@ -1,7 +1,7 @@
 GyroLinearAcceleration
 ======================
-
-Android linear acceleration with a gyroscope and acceleration sensor fusion via complimentary filter. Gyro Linear Acceleration is intended to provide code examples and a working application for developers, students and hobbyists who are interested in sensor fusions that are capable of measuring linear acceleration. While code is intended for Android devices, the jist of the algorithm can be applied to any language/hardware configuration.
+ 
+Gyro Linear Acceleration is intended to provide code examples and a working application for developers, students and hobbyists who are interested in sensor fusions that are capable of measuring linear acceleration. While code is intended for Android devices, the jist of the algorithm can be applied to any language/hardware configuration.
 
 The linear acceleration of an object is calculated as the acceleration of the device minus the force of the earth's gravitational field ( the tilt of the device). Gyro Linear Acceleration uses a complimentary filter to fuse the acceleration sensor and gyroscope sensor together to provide a measurement of the devices linear acceleration. The acceleration sensor alone is not capable of distinguishing true linear acceleration from tilt, or gravity. The gyroscope sensor is used to find the tilt of the device. The tilt angle of the device can then be used to calculate the gravity component of the acceleration that can then be subtracted from the acceleration to find the linear acceleration.
 
