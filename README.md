@@ -22,6 +22,7 @@ Useful Links:
 
 * [Gyro Linear Acceleration Homepage](http://www.kircherelectronics.com/gyrolinearacceleration/gyrolinearacceleration)
 * [Gyro Linear Acceleration Community](http://kircherelectronics.com/forum/viewforum.php?f=11)
+* [Gyro Linear Acceleration Blog Article](http://www.kircherelectronics.com/blog/index.php/11-android/sensors/17-gyroscope-linear-acceleration)
 * [Download Gyro Linear Acceleration from Google Play](https://play.google.com/store/apps/details?id=com.kircherelectronics.gyrolinearacceleration)
 
 Written by [Kircher Electronics](https://www.kircherelectronics.com)
