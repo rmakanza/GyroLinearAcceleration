@@ -1,30 +1,28 @@
 GyroLinearAcceleration
 ======================
 
-Android linear acceleration from an acceleration sensor and gyroscope sensor fusion using Cardan angles.
+![](http://www.kircherelectronics.com/bundles/keweb/css/images/gyro_linear_acceleration_phone_graphic.png?raw=true)
+ 
+Gyro Linear Acceleration is intended to provide code examples and a working application for developers, students and hobbyists who are interested in sensor fusions that are capable of measuring linear acceleration. While code is intended for Android devices, the jist of the algorithm can be applied to any language/hardware configuration.
 
-Measure linear acceleration with your Android device! Gyro Linear Acceleration uses a accelerometer and gyroscope sensor fusion to estimation linear acceleration with almost no lag time in the correction. You can visualize the output with sweet line graphics and awesome gauges to quickly compare outputs and you can even log the output to a .csv file!
+The linear acceleration of an object is calculated as the acceleration of the device minus the force of the earth's gravitational field ( the tilt of the device). Gyro Linear Acceleration uses a complimentary filter to fuse the acceleration sensor and gyroscope sensor together to provide a measurement of the devices linear acceleration. The acceleration sensor alone is not capable of distinguishing true linear acceleration from tilt, or gravity. The gyroscope sensor is used to find the tilt of the device. The tilt angle of the device can then be used to calculate the gravity component of the acceleration that can then be subtracted from the acceleration to find the linear acceleration.
 
-An accelerometer can measure the static gravity field of earth (like a tilt sensor) or it can measure measure linear acceleration (like accelerating in a vehicle), but it cannot measure both at the same time. When talking about linear acceleration in reference to an acceleration sensor, what we really mean is Linear Acceleration = Measured Acceleration - Gravity. The hard part is determining what part of the signal is gravity.
+Most people will find that the end-result of this implementation is that, while linear acceleration can be measured while the device is static (not accelerating), linear acceleration cannot be accurately measured while the device is actually under linear acceleration. This is because the complementary filter, which is used to compensate for the drift of the gyroscope, begins to assume the acceleration of the device is actually tilt, skewing the rotation measurements from the gyroscope. This problem can also be seen in most Android implementations of Sensor.TYPE_LINEAR_ACCELERATION. You can explore the issue further with [Android Linear Acceleration](https://github.com/KEOpenSource/AndroidLinearAcceleration). The problem can be mitigated to a large extent by using concepts from [Simple Linear Acceleration](https://github.com/KEOpenSource/SimpleLinearAcceleration).
 
-Sensor fusions take measurements from multiple sensors and fuse them together to create a better estimate than either sensor could do by itself. The most common type of sensor fusion to determine linear acceleration is an accelerometer and gyroscope, which measures the rotation of the device. If you know the rotation of the device and the acceleration of gravity, you can determine the tilt of the device and subtract that from the measured acceleration to get linear acceleration. However, not all devices have gyroscopes. You will need one on your device to use Gyro Linear Accleration.
+Related to the linear acceleration problem is that the gyroscope sensor can easily drift out of rotation with the device when it is experiencing vibrations or rapid rotations, even with the help of an acceleration sensor. If you modify the complementary filter to quickly compensate for gyroscope drift with the acceleration sensor, you increase the problem of the complimentary filter confusing linear acceleration for tilt when the device is actually accelerating. Applying concepts from [Fused Gyroscope Explorer](https://github.com/KEOpenSource/FusedGyroscopeExplorer) can help to increase the reliability of the gyroscope.
 
-What would you want to measure the linear acceleration of? Lots of freaking amazing stuff.
-
-For example, you can measure the linear acceleration of (not recommended):
-
-• Your car driving around a road course
-• Your mountain bike going up a hill
-• Your plane accelerating
-• Your dog chasing your cat
-• Your R/C truck flying through the air
-• Your rockets for your science fair project
-
-Totally impress your friends with all these cool features!
+Gyro Linear Acceleration may work well for determining linear acceleration for a static device, for instance, that moves a character or vehicle in a game by tilting the device. Gyro Linear Acceleration will not work well for determining the linear acceleration of a vehicle or other object that actually accelerates the device. However, with careful consideration for the application, a few modifcations to Gyro Linear Acceleration can produce the desired results for most applications.  Most of these considerations have been implemented in [Fused Linear Acceleration](https://github.com/KEOpenSource/FusedLinearAcceleration) which provides a reliable estimation of linear acceleration under most conditions.
 
 Features:
-• Log all of your data in real-time
-• Spiffy gauges to display the outputs
-• Pretty graphs to visualize how awesome your filter is working
+* Plot linear acceleration in real-time
+* Log linear acceleration to an external .CSV file
+* Compare different implementations of linear acceleration to Gyro Linear Acceleration
 
-Yup, you can make your phone at least 10 times more amazing (rough estimate) by downloading Gyro Linear Acceleration and then measuring the linear acceleration of you doing something super sweet.
+Useful Links:
+
+* [Gyro Linear Acceleration Homepage](http://www.kircherelectronics.com/gyrolinearacceleration/gyrolinearacceleration)
+* [Gyro Linear Acceleration Community](http://kircherelectronics.com/forum/viewforum.php?f=11)
+* [Gyro Linear Acceleration Blog Article](http://www.kircherelectronics.com/blog/index.php/11-android/sensors/17-gyroscope-linear-acceleration)
+* [Download Gyro Linear Acceleration from Google Play](https://play.google.com/store/apps/details?id=com.kircherelectronics.gyrolinearacceleration)
+
+Written by [Kircher Electronics](https://www.kircherelectronics.com)
