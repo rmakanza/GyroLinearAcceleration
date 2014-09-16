@@ -45,8 +45,8 @@ import android.widget.Toast;
 
 import com.androidplot.xy.XYPlot;
 import com.kircherelectronics.gyrolinearacceleration.R;
-import com.kircherelectronics.gyrolinearacceleration.gauge.GaugeAccelerationFlat;
-import com.kircherelectronics.gyrolinearacceleration.gauge.GaugeRotationFlat;
+import com.kircherelectronics.gyrolinearacceleration.gauge.GaugeAcceleration;
+import com.kircherelectronics.gyrolinearacceleration.gauge.GaugeRotation;
 import com.kircherelectronics.gyrolinearacceleration.plot.DynamicPlot;
 import com.kircherelectronics.gyrolinearacceleration.plot.PlotColor;
 import com.kircherelectronics.gyrolinearacceleration.sensor.AccelerationSensor;
@@ -57,9 +57,9 @@ import com.kircherelectronics.gyrolinearacceleration.sensor.observer.LinearAccel
 /**
  * Produces an estimation of the linear acceleration using a fusion between the
  * acceleration sensor and the gyroscope sensor. The gyroscope is used to
- * determine the tilt of the device and Trigonometric calculations are used to determine
- * the gravity components of the tilt angles via Cardan angles to determine
- * linear acceleration.
+ * determine the tilt of the device and Trigonometric calculations are used to
+ * determine the gravity components of the tilt angles via Cardan angles to
+ * determine linear acceleration.
  * 
  * @author Kaleb
  * 
@@ -87,16 +87,16 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 	private float zoom = 1.2f;
 
 	// The Acceleration Gauge
-	private GaugeRotationFlat gaugeAccelerationTilt;
+	private GaugeRotation gaugeAccelerationTilt;
 
 	// The LPF Gauge
-	private GaugeRotationFlat gaugeLinearAccelTilt;
+	private GaugeRotation gaugeLinearAccelTilt;
 
 	// The Acceleration Gauge
-	private GaugeAccelerationFlat gaugeAcceleration;
+	private GaugeAcceleration gaugeAcceleration;
 
 	// The LPF Gauge
-	private GaugeAccelerationFlat gaugeLinearAcceleration;
+	private GaugeAcceleration gaugeLinearAcceleration;
 
 	// Icon to indicate logging is active
 	private ImageView iconLogger;
@@ -159,8 +159,16 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_linear_acceleration);
 
-		View view = findViewById(R.id.scroll_view);
+		View view = findViewById(R.id.plot_layout);
 		view.setOnTouchListener(this);
+
+		TextView accelerationLable = (TextView) view
+				.findViewById(R.id.label_acceleration_name_0);
+		accelerationLable.setText("Acceleration");
+
+		TextView lpfLable = (TextView) view
+				.findViewById(R.id.label_acceleration_name_1);
+		lpfLable.setText("Fused");
 
 		// Create the graph plot
 		XYPlot plot = (XYPlot) findViewById(R.id.plot_sensor);
@@ -213,6 +221,12 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 		// Log the data
 		case R.id.menu_settings_logger_plotdata:
 			startDataLog();
+			return true;
+
+			// Reset the data
+		case R.id.menu_settings_reset:
+			linearAccelerationSensor.onPause();
+			linearAccelerationSensor.onStart();
 			return true;
 
 			// Log the data
@@ -361,11 +375,11 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 	 */
 	private void initGauges()
 	{
-		gaugeAccelerationTilt = (GaugeRotationFlat) findViewById(R.id.gauge_acceleration_tilt);
-		gaugeLinearAccelTilt = (GaugeRotationFlat) findViewById(R.id.gauge_linear_acceleration_tilt);
+		gaugeAccelerationTilt = (GaugeRotation) findViewById(R.id.gauge_rotation_0);
+		gaugeLinearAccelTilt = (GaugeRotation) findViewById(R.id.gauge_rotation_1);
 
-		gaugeAcceleration = (GaugeAccelerationFlat) findViewById(R.id.gauge_acceleration);
-		gaugeLinearAcceleration = (GaugeAccelerationFlat) findViewById(R.id.gauge_linear_acceleration);
+		gaugeAcceleration = (GaugeAcceleration) findViewById(R.id.gauge_acceleration_0);
+		gaugeLinearAcceleration = (GaugeAcceleration) findViewById(R.id.gauge_acceleration_1);
 	}
 
 	/**
@@ -559,7 +573,7 @@ public class LinearAccelerationActivity extends Activity implements Runnable,
 						public void onScanCompleted(final String path,
 								final Uri uri)
 						{
-					
+
 						}
 					});
 		}

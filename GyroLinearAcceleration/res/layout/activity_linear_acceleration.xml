@@ -2,335 +2,321 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="11" 
+    android:id="@+id/plot_layout">
 
-    <ScrollView
-        android:id="@+id/scroll_view"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight=".5" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/label_filter_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/acceleration_name"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/dark_orange" />
+
+            <TextView
+                android:id="@+id/label_filter_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/label_filter_name"
+                android:text="@string/sensor_name"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_statistics"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" >
+
+            <TableLayout
+                android:id="@+id/table_statistics_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TableRow
+                    android:id="@+id/table_statistics_left_row_0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dip" >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            android:id="@+id/label_x_axis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="X:"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/value_x_axis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/label_x_axis"
+                            android:text="0.00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            android:id="@+id/label_y_axis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="Y:"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/value_y_axis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/label_y_axis"
+                            android:text="0.00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            android:id="@+id/label_z_axis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="Z:"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/value_z_axis"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/label_z_axis"
+                            android:text="0.00"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </RelativeLayout>
+                </TableRow>
+            </TableLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fillViewport="true" >
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 
-        <LinearLayout
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/plot_sensor"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="4.3"
+        title="Acceleration" />
+
+    <ImageView
+        android:id="@+id/icon_logger"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight=".5"
+        android:src="@drawable/icon_logger" />
+
+    <RelativeLayout
+        android:id="@+id/layout_acceleration_gauge_0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2" >
+
+        <RelativeLayout
+            android:id="@+id/label_acceleration_gauge_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/label_acceleration_name_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/input_name"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/light_green" />
+
+            <TextView
+                android:id="@+id/label_acceleration_description_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/label_acceleration_name_0"
+                android:text="@string/sensor_name"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"
+        android:orientation="vertical"
+        android:weightSum="1" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeAcceleration
+                android:id="@+id/gauge_acceleration_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeRotation
+                android:id="@+id/gauge_rotation_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_acceleration_gauge_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2" >
+
+        <RelativeLayout
+            android:id="@+id/label_acceleration_gauge_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <TextView
+                android:id="@+id/label_acceleration_name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/input_name"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/light_blue" />
+
+            <TextView
+                android:id="@+id/label_acceleration_description_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/label_acceleration_name_1"
+                android:text="@string/sensor_name"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"
+        android:orientation="vertical"
+        android:weightSum="1" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeAcceleration
+                android:id="@+id/gauge_acceleration_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeRotation
+                android:id="@+id/gauge_rotation_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" >
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true" >
-
-                    <TextView
-                        android:id="@+id/label_filter_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="@string/acceleration_name"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/dark_orange" />
-
-                    <TextView
-                        android:id="@+id/label_filter_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/label_filter_name"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="@string/sensor_name"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout_statistics"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true" >
-
-                    <TableLayout
-                        android:id="@+id/table_statistics_left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <TableRow
-                            android:id="@+id/table_statistics_left_row_0"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="2dip" >
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp"
-                                android:layout_weight="1" >
-
-                                <TextView
-                                    android:id="@+id/label_x_axis"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="X:"
-                                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                                <TextView
-                                    android:id="@+id/value_x_axis"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_toRightOf="@+id/label_x_axis"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="0.00"
-                                    android:textAppearance="?android:attr/textAppearanceMedium" />
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" >
-
-                                <TextView
-                                    android:id="@+id/label_y_axis"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="Y:"
-                                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                                <TextView
-                                    android:id="@+id/value_y_axis"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_toRightOf="@+id/label_y_axis"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="0.00"
-                                    android:textAppearance="?android:attr/textAppearanceMedium" />
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_weight="1" >
-
-                                <TextView
-                                    android:id="@+id/label_z_axis"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="Z:"
-                                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                                <TextView
-                                    android:id="@+id/value_z_axis"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_toRightOf="@+id/label_z_axis"
-                                    android:fontFamily="sans-serif-condensed"
-                                    android:text="0.00"
-                                    android:textAppearance="?android:attr/textAppearanceMedium" />
-                            </RelativeLayout>
-                        </TableRow>
-                    </TableLayout>
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
-            <com.androidplot.xy.XYPlot
-                android:id="@+id/plot_sensor"
-                android:layout_width="fill_parent"
-                android:layout_height="220dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                title="Acceleration" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true" >
-
-                    <RelativeLayout
-                        android:id="@+id/layout_acceleration_tilt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <RelativeLayout
-                            android:id="@+id/label_acceleration_tilt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true" >
-
-                            <TextView
-                                android:id="@+id/label_acceleration_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="@string/acceleration_name"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/light_green" />
-
-                            <TextView
-                                android:id="@+id/label_acceleration_description"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/label_acceleration_name"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="@string/sensor_name"
-                                android:textAppearance="?android:attr/textAppearanceSmall" />
-                        </RelativeLayout>
-
-                        <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeRotationFlat
-                            android:id="@+id/gauge_acceleration_tilt"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_below="@+id/label_acceleration_tilt" />
-
-                        <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeAccelerationFlat
-                            android:id="@+id/gauge_acceleration"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_below="@+id/gauge_acceleration_tilt" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/layout_lpf_tilt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/layout_acceleration_tilt" >
-
-                        <RelativeLayout
-                            android:id="@+id/label_lpf_tilt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true" >
-
-                            <TextView
-                                android:id="@+id/label_lpf_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="@string/gyro_name"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/light_blue" />
-
-                            <TextView
-                                android:id="@+id/label_lpf_description"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/label_lpf_name"
-                                android:fontFamily="sans-serif-condensed"
-                                android:text="@string/fusion_label"
-                                android:textAppearance="?android:attr/textAppearanceSmall" />
-                        </RelativeLayout>
-
-                        <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeRotationFlat
-                            android:id="@+id/gauge_linear_acceleration_tilt"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_below="@+id/label_lpf_tilt" />
-
-                        <com.kircherelectronics.gyrolinearacceleration.gauge.GaugeAccelerationFlat
-                            android:id="@+id/gauge_linear_acceleration"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_below="@+id/gauge_linear_acceleration_tilt" />
-                    </RelativeLayout>
-                </RelativeLayout>
-            </RelativeLayout>
+            android:layout_above="@+id/color_bar" >
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" >
+
+                <ImageView
+                    android:id="@+id/image_developer_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ke_icon" />
+
+                <TextView
+                    android:id="@+id/label_developer_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/image_developer_icon"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/developer_url"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
             </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/color_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" >
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" >
 
-                <RelativeLayout
-                    android:id="@+id/data_log_icon_layout"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/image_color_bar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/data_rms_layout" >
-
-                    <ImageView
-                        android:id="@+id/icon_logger"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/icon_logger" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/color_bar" >
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true" >
-
-                        <ImageView
-                            android:id="@+id/image_developer_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="4dp"
-                            android:src="@drawable/ke_icon" />
-
-                        <TextView
-                            android:id="@+id/label_developer_description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/image_developer_icon"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="@string/developer_url"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-                    </RelativeLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/color_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp" >
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true" >
-
-                        <ImageView
-                            android:id="@+id/image_color_bar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/color_bar" />
-                    </RelativeLayout>
-                </RelativeLayout>
+                    android:src="@drawable/color_bar" />
             </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

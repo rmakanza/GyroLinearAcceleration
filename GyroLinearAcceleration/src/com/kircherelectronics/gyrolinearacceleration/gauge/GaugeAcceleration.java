@@ -47,7 +47,7 @@ import android.view.View;
  * @see http://developer.android.com/reference/android/view/View.html
  * @since Scott Bannick 7/19/2013: Made gui changes
  */
-public final class GaugeAccelerationFlat extends View
+public final class GaugeAcceleration extends View
 {
 
 	/*
@@ -94,7 +94,7 @@ public final class GaugeAccelerationFlat extends View
 	 * break a significant number of them, from subtly to significantly.)
 	 */
 
-	private static final String tag = GaugeAccelerationFlat.class.getSimpleName();
+	private static final String tag = GaugeAcceleration.class.getSimpleName();
 
 	// holds the cached static part
 	private Bitmap background;
@@ -130,7 +130,7 @@ public final class GaugeAccelerationFlat extends View
 	 * 
 	 * @param context
 	 */
-	public GaugeAccelerationFlat(Context context)
+	public GaugeAcceleration(Context context)
 	{
 		super(context);
 		init();
@@ -142,7 +142,7 @@ public final class GaugeAccelerationFlat extends View
 	 * @param context
 	 * @param attrs
 	 */
-	public GaugeAccelerationFlat(Context context, AttributeSet attrs)
+	public GaugeAcceleration(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 		init();
@@ -155,7 +155,7 @@ public final class GaugeAccelerationFlat extends View
 	 * @param attrs
 	 * @param defStyle
 	 */
-	public GaugeAccelerationFlat(Context context, AttributeSet attrs, int defStyle)
+	public GaugeAcceleration(Context context, AttributeSet attrs, int defStyle)
 	{
 		super(context, attrs, defStyle);
 		init();

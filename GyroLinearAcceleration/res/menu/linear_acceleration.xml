@@ -9,6 +9,9 @@
             <item
                 android:id="@+id/menu_settings_logger_plotdata"
                 android:title="@string/log_data_label"/>
+              <item
+                android:id="@+id/menu_settings_reset"
+                android:title="@string/reset"/>
             <item
                 android:id="@+id/menu_settings_help"
                 android:title="@string/filter_help"/>
